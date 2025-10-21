@@ -4,7 +4,8 @@ import { Image, StyleSheet, View, useColorScheme } from 'react-native';
 export default function AppHeader() {
   const colorScheme = useColorScheme();
 
-  const backgroundColor = colorScheme === 'dark' ? '#1C1C1E' : '#F9F9F9';
+  // const backgroundColor = colorScheme === 'dark' ? '#1C1C1E' : '#F9F9F9';
+  const backgroundColor = '#1C1C1E';
 
   return (
     <View style={[styles.container, { backgroundColor }]}>
