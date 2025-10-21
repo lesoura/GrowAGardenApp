@@ -1,112 +1,163 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { Collapsible } from '@/components/ui/collapsible';
-import { ExternalLink } from '@/components/external-link';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Fonts } from '@/constants/theme';
-
-export default function TabTwoScreen() {
+export default function AboutGrowGarden() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText
-          type="title"
-          style={{
-            fontFamily: Fonts.rounded,
-          }}>
-          Explore
-        </ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
+    <View style={styles.container}>
+      {/* Header with faded image */}
+      <View style={styles.headerContainer}>
         <Image
-          source={require('@/assets/images/react-logo.png')}
-          style={{ width: 100, height: 100, alignSelf: 'center' }}
+          source={require('@/components/ui/gag.jpg')}
+          style={styles.headerImage}
+          contentFit="cover"
         />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user&apos;s current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful{' '}
-          <ThemedText type="defaultSemiBold" style={{ fontFamily: Fonts.mono }}>
-            react-native-reanimated
-          </ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
+        <View style={styles.overlay} />
+        <View style={styles.titleWrapper}>
+          <Text style={styles.tutorialTitle}>About Grow a Garden</Text>
+          <Text style={styles.tutorialSubtitle}>Plant. Evolve. Grow.</Text>
+        </View>
+      </View>
+
+      {/* Scrollable Body */}
+      <View style={styles.tutorialContainer}>
+        {/* Avatars Row */}
+        <View style={styles.avatarsRow}>
+          <View style={styles.avatarWrapper}>
+            <Image
+              source={require('@/components/ui/jandel.png')}
+              style={[styles.avatarImage, { transform: [{ scale: 1.2 }, { translateY: -6 }] }]}
+            />
+          </View>
+          <View style={styles.avatarWrapper}>
+            <Image
+              source={require('@/components/ui/jhailatte.png')}
+              style={[styles.avatarImage, { transform: [{ scale: 1.2 }, { translateY: -6 }] }]}
+            />
+          </View>
+          <View style={styles.avatarWrapper}>
+            <Image
+              source={require('@/components/ui/devnameddavid.png')}
+              style={[styles.avatarImage, { transform: [{ scale: 1.2 }, { translateY: -6 }] }]}
+            />
+          </View>
+        </View>
+
+        <ScrollView contentContainerStyle={styles.scrollContent}>
+          <Text style={styles.sectionTitle}>The Origins</Text>
+          <Text style={styles.tutorialText}>
+            Grow a Garden (GAG) started as a small online farming simulator around 2021. The idea
+            was simple — plant, harvest, and grow digital crops while watching your garden evolve.
+            But it quickly turned into something bigger.
+          </Text>
+
+          <Text style={styles.sectionTitle}>Gameplay Systems</Text>
+          <Text style={styles.tutorialText}>
+            Over time, the game introduced new systems like mutations, pets, and kg multipliers that
+            made farming more strategic. Each crop could mutate into new, rarer types with different
+            values, allowing players to experiment and compete for the most efficient yields.
+          </Text>
+
+          <Text style={styles.sectionTitle}>Community</Text>
+          <Text style={styles.tutorialText}>
+            The community behind Grow a Garden became one of its strongest points. Players shared
+            strategies, tracked crop stats, and developed calculators to help optimize their
+            gardens. What started as a chill farming game slowly evolved into a mix of creativity,
+            luck, and resource management.
+          </Text>
+
+          <Text style={styles.sectionTitle}>Today</Text>
+          <Text style={styles.tutorialText}>
+            Today, Grow a Garden continues to grow as a community-driven project where players test
+            mutations, breed crops, and calculate profits — blending simplicity with depth in a
+            unique digital farming experience.
+          </Text>
+
+          <Text style={[styles.tutorialText, { color: '#E9C589', marginTop: 10 }]}>
+            🌿 “Plant. Evolve. Grow.” — The heart of Grow a Garden.
+          </Text>
+        </ScrollView>
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
+  container: { flex: 1, backgroundColor: '#1E1E1E' },
+  headerContainer: {
+    width: '100%',
+    height: 200,
+    position: 'relative',
+    overflow: 'hidden',
   },
-  titleContainer: {
+  headerImage: {
+    width: '100%',
+    height: '100%',
+    opacity: 0.4,
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,0.3)',
+  },
+  titleWrapper: {
+    position: 'absolute',
+    left: 20,
+    top: '35%',
+  },
+  tutorialTitle: {
+    color: '#E9C589',
+    fontSize: 28,
+    fontWeight: 'bold',
+  },
+  tutorialSubtitle: {
+    color: '#FFF',
+    fontSize: 14,
+    marginTop: 4,
+  },
+  avatarsRow: {
     flexDirection: 'row',
-    gap: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 16,
+    marginVertical: 12,
+  },
+  avatarWrapper: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: '#2A2A2A',
+    borderWidth: 2,
+    borderColor: '#E9C589',
+    overflow: 'visible', // allow image to bulge out
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  avatarImage: {
+    width: 90,
+    height: 90,
+    borderRadius: 35,
+  },
+  tutorialContainer: {
+    flex: 1,
+    backgroundColor: '#2A2A2A',
+    marginHorizontal: 10,
+    marginTop: -25,
+    marginBottom: 15,
+    borderRadius: 10,
+    paddingHorizontal: 15,
+    paddingTop: 15,
+  },
+  scrollContent: { paddingBottom: 100 },
+  sectionTitle: {
+    color: '#E9C589',
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 15,
+    marginBottom: 5,
+  },
+  tutorialText: {
+    color: '#FFF',
+    fontSize: 16,
+    lineHeight: 24,
+    textAlign: 'justify',
   },
 });
